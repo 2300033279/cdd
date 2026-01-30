@@ -13,14 +13,14 @@ pipeline {
         stage('Compile') {
             steps {
                 echo 'Compiling Java program'
-                bat 'javac HelloWorld.java'
+                bat 'javac src\\HelloWorld.java'
             }
         }
 
         stage('Run') {
             steps {
                 echo 'Running Java program'
-                bat 'java HelloWorld'
+                bat 'java -cp src HelloWorld'
             }
         }
     }
