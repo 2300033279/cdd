@@ -3,7 +3,7 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
+        stage('Checkout Code') {
             steps {
                 git branch: 'main',
                     url: 'https://github.com/2300033279/cdd.git'
@@ -12,14 +12,14 @@ pipeline {
 
         stage('Compile') {
             steps {
-                echo 'Compiling Java file...'
+                echo 'Compiling Java source file'
                 sh 'javac sample.java'
             }
         }
 
         stage('Run') {
             steps {
-                echo 'Running Java program...'
+                echo 'Running Java program'
                 sh 'java sample'
             }
         }
@@ -27,10 +27,10 @@ pipeline {
 
     post {
         success {
-            echo 'Build and execution successful!'
+            echo 'Pipeline executed successfully'
         }
         failure {
-            echo 'Build failed. Please check errors.'
+            echo 'Pipeline failed'
         }
     }
 }
