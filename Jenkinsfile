@@ -5,32 +5,32 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                git branch: 'main',
-                    url: 'https://github.com/2300033279/cdd.git'
+                echo 'Checking out source code from GitHub'
+                git branch: 'main', url: 'https://github.com/2300033279/cdd.git'
             }
         }
 
         stage('Compile') {
             steps {
-                echo 'Compiling Java source file'
-                sh 'javac sample.java'
+                echo 'Compiling Java program'
+                bat 'javac HelloWorld.java'
             }
         }
 
         stage('Run') {
             steps {
                 echo 'Running Java program'
-                sh 'java sample'
+                bat 'java HelloWorld'
             }
         }
     }
 
     post {
         success {
-            echo 'Pipeline executed successfully'
+            echo '✅ Pipeline executed successfully'
         }
         failure {
-            echo 'Pipeline failed'
+            echo '❌ Pipeline failed'
         }
     }
 }
