@@ -13,24 +13,24 @@ pipeline {
         stage('Compile') {
             steps {
                 echo 'Compiling Java program'
-                bat 'javac src\\HelloWorld.java'
+                bat 'javac HelloWorld.java'
             }
         }
 
         stage('Run') {
             steps {
                 echo 'Running Java program'
-                bat 'java -cp src HelloWorld'
+                bat 'java HelloWorld'
             }
         }
     }
 
     post {
         success {
-            echo '✅ Pipeline executed successfully'
+            echo 'Pipeline executed successfully'
         }
         failure {
-            echo '❌ Pipeline failed'
+            echo 'Pipeline failed'
         }
     }
 }
